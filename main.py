@@ -26,8 +26,19 @@ from collections import Counter #draws from collection to Count occurences and a
 def get_num_character(text):
     return dict(Counter(text.lower()))
 
-""""" #old code that got redundant by the next function, but would achieve the same
-def char_count_list(char_count):
+"""""#old code that got redundant, but would achieve the same
+def get_chars_dict(text): #Counts the occurences aswell, but is redundant due to collections import counter achieves the same
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
+
+ 
+def char_count_list(char_count): # filter list for  dict {key: value} pairs
     filtered_list = [{"key": key, "value": value} for key, value in char_count.items() if key.isalpha()]
     return filtered_list
 
@@ -35,6 +46,7 @@ def char_count_list(char_count):
 def sort_on(dict): # sort logic to sort vor Value
     return dict["value"]
 """""
+
 def chars_dict_to_sorted_list(num_chars_dict):
     # Convert dictionary to list of dictionaries and sort it by the "num" value
     sorted_list = [
